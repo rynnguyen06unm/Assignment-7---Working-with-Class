@@ -1,3 +1,4 @@
+#include <cmath>
 #include <iostream>
 
 class electric_field
@@ -44,22 +45,22 @@ class electric_field
 
     void assignX(double x)
     {
-
+        efield[0] = x;
     }
 
     void assignY(double y)
     {
-
+        efield[1] = y;
     }
 
     void assignZ(double z)
     {
-
+        efield[2] = z;
     }
 
     double magnitude()
     {
-        return 0;
+        return std::sqrt(efield[0] * efield[0] + efield[1] * efield[1] + efield[2] * efield[2]);
     }
 
     double innerproduct()
@@ -112,22 +113,22 @@ class magnetic_field
 
     void assignX(double x)
     {
-
+        mfield[0] = x;
     }
 
     void assignY(double y)
     {
-
+        mfield[1] = y;
     }
 
     void assignZ(double z)
     {
-
+        mfield[2] = z;
     }
 
     double magnitude()
     {
-        return 0;
+        return std::sqrt(mfield[0] * mfield[0] + mfield[1] * mfield[1] + mfield[2] * mfield[2]);
     }
 
     void unitvector()
@@ -140,13 +141,24 @@ int main()
 {
     electric_field edefault;
     electric_field ecomponents(1.0, 2.0, 3.0);
+    electric_field eassign;
+    eassign.assignX(1.0);
+    eassign.assignY(2.0);
+    eassign.assignZ(3.0);
+
     magnetic_field mdefault;
     magnetic_field mcomponents(1.0, 2.0, 3.0);
+    magnetic_field massign;
+    massign.assignX(1.0);
+    massign.assignY(2.0);
+    massign.assignZ(3.0);
 
-    std::cout << edefault.getX() << " " << edefault.getY() << " " << edefault.getZ() << "\n";
-    std::cout << ecomponents.getX() << " " << ecomponents.getY() << " " << ecomponents.getZ() << "\n";
-    std::cout << mdefault.getX() << " " << mdefault.getY() << " " << mdefault.getZ() << "\n";
-    std::cout << mcomponents.getX() << " " << mcomponents.getY() << " " << mcomponents.getZ() << "\n";
+    std::cout << "edefault: " << edefault.magnitude() << "\n";
+    std::cout << "ecomponents: " << ecomponents.magnitude() << "\n";
+    std::cout << "eassign: " << eassign.magnitude() << "\n";
+    std::cout << "mdefault: " << mdefault.magnitude() << "\n";
+    std::cout << "mcomponents: " << mcomponents.magnitude() << "\n";
+    std::cout << "massign: " << massign.magnitude() << "\n";
 
     return 0;
 }
