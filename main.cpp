@@ -65,7 +65,7 @@ class electric_field
 
     double innerproduct()
     {
-        return 0;
+        return efield[0] * efield[0] + efield[1] * efield[1] + efield[2] * efield[2];
     }
 };
 
@@ -133,7 +133,7 @@ class magnetic_field
 
     void unitvector()
     {
-
+        std::cout << "(" << mfield[0] / magnitude() << ", " << mfield[1] / magnitude() << ", " << mfield[2] / magnitude() << ")\n";
     }
 };
 
@@ -159,6 +159,10 @@ int main()
     std::cout << "mdefault: " << mdefault.magnitude() << "\n";
     std::cout << "mcomponents: " << mcomponents.magnitude() << "\n";
     std::cout << "massign: " << massign.magnitude() << "\n";
+
+    std::cout << "inner product: " << eassign.innerproduct() << "\n";
+    std::cout << "unit vector: ";
+    massign.unitvector();
 
     return 0;
 }
